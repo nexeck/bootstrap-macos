@@ -6,24 +6,11 @@ fi
 
 set +e
 
-echo ""
-echo "› Dependencies:"
-if ! command -v brew > /dev/null 2>&1; then
-	echo "  › Installing Homebrew"
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-    echo "  › Homebrew already installed"
-fi
+echo "› Init:"
+curl -fsSL https://raw.githubusercontent.com/nexeck/bootstrap-macos/master/init.sh | sh
 
 echo "› Defaults:"
 curl -fsSL https://raw.githubusercontent.com/nexeck/bootstrap-macos/master/defaults.sh | sh
 
 echo "› Dotfiles:"
-echo "  › Clone dotfiles"
-git clone git@github.com:nexeck/dotfiles.git ~/.dotfiles
-echo "  › Install rcm"
-brew tap thoughtbot/formulae
-brew install rcm
-
-echo "  › Install dotfiles"
-env RCRC=$HOME/.dotfiles/rcrc rcup
+curl -fsSL https://raw.githubusercontent.com/nexeck/bootstrap-macos/master/dotfiles.sh | sh
