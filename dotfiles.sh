@@ -16,3 +16,6 @@ brew install rcm
 
 echo "  › Install dotfiles"
 env RCRC=$HOME/.dotfiles/rcrc rcup
+
+echo "› Brew bundle"
+brew bundle --global
