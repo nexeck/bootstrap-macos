@@ -8,7 +8,12 @@ set +e
 
 echo "› Dotfiles:"
 echo "  › Clone dotfiles"
-git clone git@github.com:nexeck/dotfiles.git ~/.dotfiles
+if ! test -d ~/.dotfiles
+then
+  git clone git@github.com:nexeck/dotfiles.git ~/.dotfiles
+else
+  echo "  › Dotfiles exists"
+fi
 
 echo "  › Install rcm"
 brew tap thoughtbot/formulae
